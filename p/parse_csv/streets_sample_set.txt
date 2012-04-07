@@ -1,0 +1,5 @@
+0000SND 10051810B 00075435                                               
+11   1 AVENUE                     PF11001001010  N 11   1 AVENUE                                                                                                   0                                    
+11   1 AVENUE LOOP                PF13172001020  N 16   1 AVENUE LOOP                                                                                              0                                    
+11   1 AVENUE LOWER NB ROADBED    VF11001007010  N 28   1 AVENUE LOWER NB ROADBED                          R                                                       0                                    
+11   1 AVENUE NORTHBOUND ROADBED  VF11001006010  N 30   1 AVENUE NORTHBOUND ROADBED                        R                                                       0

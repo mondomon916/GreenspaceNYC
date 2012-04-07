@@ -1,0 +1,24 @@
+name: Name of the artwork
+
+
+artist: Name of the artist
+
+
+from_date: Starting date the artwork is installed (YYYY-MM-DD)
+
+
+to_date: Ending date the artwork is installed (YYYY-MM-DD)
+
+
+location: Text location
+
+
+description: Description of the artwork in HTML
+
+
+borough: Code of the borough:
+X - Bronx
+B - Brooklyn
+M - Manhattan
+Q - Queens
+R - Staten Island

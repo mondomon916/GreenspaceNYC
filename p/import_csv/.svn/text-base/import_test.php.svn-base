@@ -1,0 +1,22 @@
+<?php
+
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 'On');
+echo('hello');
+require_once('import_csv.php');
+
+$my_import = new Import_csv();
+//$in = 'http://www.greenspacenyc.org/p/parse_csv/addr_sample_set.txt';
+//$in = 'http://www.greenspacenyc.org/p/parse_csv/addr_result_mh.txt';
+//$in = 'http://www.greenspacenyc.org/p/parse_csv/result.txt';
+//$in = 'http://www.greenspacenyc.org/p/parse_csv/dob_complaints_sample.txt';
+$in = 'http://www.greenspacenyc.org/p/parse_csv/DOB_Complaints201009_001.csv';
+//$in = 'http://www.greenspacenyc.org/p/parse_csv/mh_bbl_result.txt';
+$out = 'addr_sample_result.txt';
+//$my_import->import_bbl($in, $out);
+//$my_import->import($in, $out);
+$my_import->import_dob($in, $out);
+//$my_import->import_bbl_new($in, $out);
+var_dump($my_import);
+
+?>

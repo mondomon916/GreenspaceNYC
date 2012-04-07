@@ -1,0 +1,150 @@
+/*--------------------------------------------------------------
+	GLOBAL STYLES
+	This is where the sitewide styles live. 
+	Here you can change the font, color, header, and footer styles.
+	
+	FONT STACKS
+	Fedra Sans Sans Screen	"Fedra Sans Screen Regular", Trebuchet MS, Verdana, Arial, sans-serif;
+	
+	COLORS
+	magenta			#cf1974
+	gray			#5e6a71, #cdcccc
+	medGray			#9b9b9b
+	darkGray		#3f3f3f, #999999
+	white			#ffffff
+	yellow			#f2eb18
+	navy			#0e1130
+	purple			#333399
+	aqua			#66CCCC
+	grey			#EEEEEE
+
+--------------------------------------------------------------*/
+
+@CHARSET "UTF-8";
+
+html, body {
+    background-color: #EEEEEE;
+    font-family: Verdana;
+}
+body {
+    padding-top: 40px;
+}
+
+/*--------------------------------------------------------------
+	BLOCK LEVEL ELEMENTS
+	Block level elements take up the entire width available.
+--------------------------------------------------------------*/
+
+/* header elements */
+h1 { color: #000000; margin: 0 0 0.8em; }
+h2 { color: #66CCCC; margin: 0 0 0.8em; }
+h3 { color: #EEEEEE; margin: 0 0 0.8em; }
+h4 { color: #f2eb18; margin: 0 0 0.8em; }
+h5 { color: #f2eb18; margin: 0 0 0.8em; }
+h6 { color: #f2eb18; margin: 0 0 0.8em; }
+
+p, ul, dl, ol, table { 
+	color: #3f3f3f; 
+	margin: 0 0 .5em;
+	font: 1.3em/1.5em "Fedra Sans Screen Regular", Trebuchet MS, Verdana, Arial, sans-serif; }
+
+dd, li { }
+ol li { }
+
+blockquote { font-size: 1.8em; line-height:1.3em; margin: 0 0 1em 0; }
+blockquote p, blockquote cite { padding: 0 1.5em; }
+	
+table { }
+th { }
+th, th a { }
+td { }
+
+/*--------------------------------------------------------------
+	INLINE LEVEL ELEMENTS
+	Inline level elements only take up the needed space.
+	They do not force new lines.
+--------------------------------------------------------------*/
+
+em { }
+strong { font-family: "Fedra Sans Screen Bold"; font-weight: normal; }
+
+a { color: #009dda; text-decoration: none; }
+a:hover, a:focus { color: #cf1974; }
+
+img { display: block; }
+a img { border: none; }
+
+input, textarea { }
+input:focus, textarea:focus { }
+
+label { display: block; }
+sub, sup { line-height: 0.5; }
+abbr { border: none; }
+
+/*--------------------------------------------------------------
+	CLASS FLOATS
+	ex: If you want a picture to be on the left side of an
+	article, you can add a class to it.
+--------------------------------------------------------------*/
+
+.nomargin {  margin: 0em; }
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+
+/*--------------------------------------------------------------
+	GENERAL STRUCTURE
+	Here is where you have general layout/positioning styles.
+	You can control the width, clears, and floats of elements.	
+--------------------------------------------------------------*/
+
+.container > footer p {
+    text-align: center;
+}
+.container {
+    width: 820px;
+}
+.content {
+    background-color: #FFFFFF;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    margin: 0 -20px;
+    padding: 20px;
+}
+
+/*--------------------------------------------------------------
+	.page-header	
+--------------------------------------------------------------*/
+
+.page-header {
+    background-color: #F5F5F5;
+    margin: -20px -20px 20px;
+    padding: 20px 20px 10px;
+}
+
+/*--------------------------------------------------------------
+	.content	
+--------------------------------------------------------------*/
+
+.content .span10, .content .span4 {
+    min-height: 500px;
+}
+.content .span4 {
+    border-left: 1px solid #EEEEEE;
+    margin-left: 0;
+    padding-left: 19px;
+}
+
+/*--------------------------------------------------------------
+	.topbar	
+--------------------------------------------------------------*/
+
+.topbar .btn {
+    border: 0 none;
+}
+.topbar .fill {
+	background-color: #888888;
+	    background-image: -moz-linear-gradient(center top , #888888, #333333);
+	    background-repeat: repeat-x;
+	    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+}

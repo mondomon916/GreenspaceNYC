@@ -1,0 +1,27 @@
+Property_IDs: A unique identifier for the property. The first character is a abbreviation of the borough,
+followed by a 3 digit number. Anything after the first 4 characters represents a subproperty.
+Boroughs:
+X - Bronx
+B - Brooklyn
+M - Manhattan
+Q - Queens
+R - Staten Island
+See http://www.nycgovparks.org/bigapps/DPR_Parks_001.xml
+
+
+Park_Name: The name of the property
+
+
+Contract_Number: Number of awarded contract
+
+
+Project_Description: A brief description of the project
+
+
+Total_Budget: Budget for the project in US Dollars
+
+
+Order_To_Work: Start date of work on the project (YYYY-MM-DD)
+
+
+Final_Inspection: Date work was inspected (YYYY-MM-DD)

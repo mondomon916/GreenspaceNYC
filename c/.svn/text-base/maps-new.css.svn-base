@@ -1,0 +1,203 @@
+/**
+ * Greenspacenyc - by Greenspacenyc
+ *
+ * @package		Greenspacenyc
+ * @author		Greenspacenyc Dev Team
+ * @copyright	Copyright (c) 2003 - 2010, Greenspacenyc
+ * @link		http://www.greenspacenyc.org
+ * @since		Version 1.0
+ * @filesource
+ */
+
+
+/**
+* @font-stacks
+*/
+
+
+/**
+* @DOM elements
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset
+{
+	border: none;	
+}
+
+img.marker
+{
+	border:1px solid black;
+	float:left;
+	height:20px;
+	width:20px;
+	
+}
+
+/* @group reset */
+
+
+/**
+* @classes
+*/
+.form-field
+{
+	width:90px;
+}
+
+.marker
+{
+	
+	height:20px;
+	width:20px;
+}
+
+.standard-form
+{
+	display: block;
+	/*float: left;*/
+	margin-right: 10px;
+	text-align: right;
+	width: 210px;
+}
+
+/**
+* @Ids
+*/
+
+#advanced-search-drop 
+{
+	border: 1px solid #6FCCDD;
+	display: none;
+	padding: 10px 0px;
+	position:relative;
+}
+
+#advanced-search-drop ul
+{
+	display: block;
+	position:relative;
+	width:550px;
+}
+
+#advanced-search-drop ul li
+{
+	float:left;
+}
+
+#advanced-search-drop ul li input
+{
+	margin-left: 3px;
+}
+
+#advanced-search-drop ul li label
+{
+	padding: 0 2px;
+}
+
+#bis label 
+{ 
+	font-size:14px;
+	position: relative; 
+	text-align:left; 
+	width:80px;
+}
+
+
+#bis-container
+{
+	border: 1px solid #6FCCDD;
+	height:320px;
+	/*margin: 10px 0px;*/
+	position:relative;
+	width:218px;
+}
+
+#bis-container h3
+{
+	margin: 0 10px;
+}
+
+#location-results
+{
+	position:relative;
+	width:540px;
+}
+
+#location-results ul
+{
+	position:relative;
+	width:540px;
+}
+
+#location-results ul li img
+{
+	border:1px solid black;
+	float:left;
+	height:20px;
+	width:20px;
+	
+}
+
+#location-results ul li p
+{
+	/*border:1px solid red;*/
+	border-bottom: 2px solid #6FCCDD;
+	font-family: news-gothic-std-1, news-gothic-std-2, Verdana, Geneva, sans-serif;
+	width:540px;
+
+}
+
+#map_canvas 
+{ 
+	
+	height: 450px;
+	margin-bottom: 40px;
+	position: relative;
+	top: 10px;
+	width: 540px;
+}
+
+#news-results
+{
+	clear:both;
+}
+
+#paginationLinks
+{
+	clear:both;
+}
+
+#property-meta
+{
+	width: 560px;
+}
+
+#property-meta ul
+{
+
+	float: left;
+	margin: 0px 7px 0px 0px;
+	padding: 0px;
+	width: 560px;
+}
+
+#property-meta li
+{
+	float: left;
+	margin: 0px 7px 0px 0px;
+	padding: 0px;
+	width: 560px;
+}
+
+#property-meta ul li
+{
+	float: left;
+	margin: 0px 7px 0px 40px;
+	padding: 0px;
+	width: 560px;
+}

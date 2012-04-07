@@ -1,0 +1,1454 @@
+/**
+ * Greenspacenyc - by Greenspacenyc
+ *
+ * @package		Greenspacenyc
+ * @author		Greenspacenyc Dev Team
+ * @copyright	Copyright (c) 2003 - 2010, Greenspacenyc
+ * @link		http://www.greenspacenyc.org
+ * @since		Version 1.0
+ * @filesource
+ */
+
+// --------------------------------------------------------------------
+
+/**
+ * Greenspacenyc cURL class
+ *
+ * @package		Greenspacenyc
+ * @subpackage	Modules
+ * @category	Modules
+ * @author		Greenspacenyc Dev Team
+ * @link		http://www.greenspacenyc.org
+ */
+
+/**
+ * @Web-fonts
+ */
+/*
+@font-face 
+{
+	font-family: 'Colaborate Regular';
+	src: url('/f/colabreg-webfont.eot');
+	src: local('☺'), url('/f/colabreg-webfont.woff') format('woff'), url('/f/colabreg-webfont.ttf') format('truetype'), url('/f/colabreg-webfont.svg#webfonti4rlns7S') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Colaborate Bold';
+	src: url('/f/colabbol-webfont.eot');
+	src: local('☺'), url('/f/colabbol-webfont.woff') format('woff'), url('/f/colabbol-webfont.ttf') format('truetype'), url('/f/colabbol-webfont.svg#webfontXK32E15Q') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Colaborate Light';
+	src: url('/f/colablig-webfont.eot');
+	src: local('☺'), url('/f/colablig-webfont.woff') format('woff'), url('/f/colablig-webfont.ttf') format('truetype'), url('/f/colablig-webfont.svg#webfontZNNM2D3g') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Colaborate Medium';
+	src: url('/f/colabmed-webfont.eot');
+	src: local('☺'), url('/f/colabmed-webfont.woff') format('woff'), url('/f/colabmed-webfont.ttf') format('truetype'), url('/f/colabmed-webfont.svg#webfontMt9moP51') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Colaborate Thin';
+	src: url('/f/colabthi-webfont.eot');
+	src: local('☺'), url('/f/colabthi-webfont.woff') format('woff'), url('/f/colabthi-webfont.ttf') format('truetype'), url('/f/colabthi-webfont.svg#webfontnjUUI2Uq') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+*/
+
+
+
+/**
+ * @font stacks
+ */
+/*
+font-family: "Colaborate Regular", Verdana, Geneva, sans-serif; 
+font-family: "Colaborate Bold", Verdana, Geneva, sans-serif;
+font-family: "Colaborate Light", Verdana, Geneva, sans-serif; 
+font-family: "Colaborate Medium", Verdana, Geneva, sans-serif; 
+font-family: "Colaborate Thin", Verdana, Geneva, sans-serif; 
+*/
+/*font-family: "Fedra Serif Screen Regular", Georgia, Cambria, "Times New Roman", Times, serif; 
+font-family: "Fedra Serif Screen Bold", Georgia, Cambria, "Times New Roman", Times, serif;*/
+
+
+
+/**
+ * @DOM Elements
+ */
+
+/*a,
+body,
+dd,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+li,
+ol,
+p,
+td,th,
+tr
+ul
+{	
+}
+*/
+
+/* @group Reset */
+* 
+{ 
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+}
+
+a
+{
+	color: #66CCCC;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	text-decoration:none;
+}
+
+a:hover
+{
+	color: #99CC66;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	text-decoration: underline;
+}
+
+body 
+{
+	background-color: #f6f6f6;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	margin:0 0 0 0;
+	min-width: 480px;
+	width: 100%;
+}
+h1
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif; 
+	font-size:30px;
+	margin: 0 0 0 0;
+	text-transform: uppercase;
+}
+
+h2
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif; 
+	font-size:20px;
+	margin-top: 0px;
+}
+
+h3
+{
+	color: #333333;
+	font-size: 15px;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+h4
+{
+	font-size: 15px;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-weight: none;
+	color: #333333;
+	margin: 0;
+}
+
+li
+{
+	margin: 0px 0px 0px;
+}
+
+p
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Georgia, Cambria, "Times New Roman", Times, serif;
+	font-size:12px;
+	margin: 0px 0px 1.5em;
+}
+
+span.profilepic-icon
+{
+	position:absolute;
+	top: -2px;
+	right: 0px;
+}
+
+strong
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+}
+ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+
+/**
+ * @End DOM Elements
+ */
+/**
+ * @Classes
+ */
+ 
+.aboutme-body {
+	color: #000000;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 10px;
+}
+ 
+.aboutme-headings {
+	color: #66cccc;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+}
+ 
+.aboutme-lastsection {
+ 	padding-bottom: 0;
+}
+ 
+.aboutme-name {
+	color: #000000;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+}
+ 
+.aboutme-section {
+ 	padding: 10px 0px;
+}
+
+.bold
+{
+	font-style:normal;
+	font-weight: 700;
+	
+}
+
+.bold-italic
+{
+	font-style:italic;
+	font-weight: 700;
+}
+	
+.discussion
+{
+	color: #000000;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	width: 460px;
+}
+
+	.discussion-date
+	{
+		color: #cccccc;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 20px;
+	}
+	
+	.discussion-feedback li
+	{
+		color: #66cccc;
+		list-style-type: none;
+		display: inline;
+		padding-right: 10px;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 12px;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+
+	.discussion-title, .friends-title
+	{
+		color: #000000;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 20px;
+		padding-right: 10px;
+	}
+
+.feed-title
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size:18px;
+}
+
+.feed-item
+{
+	margin: 20px 0 20px 0;
+}
+
+.feed-wrap div
+{
+	margin: 0 0 20px;
+}
+
+.full-col
+{
+	clear:both;
+	left:0px;
+	margin:0px 20px 20px 0px;
+	position: relative;
+	width: 460px;	
+}
+
+.groups
+{
+	padding: 0;
+	margin-left: -2px;
+	margin-top: -2px;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 10px;
+}
+
+.groups-cell
+{
+	padding-right: 19px;
+}
+
+.groups-discussion-body
+{
+	color: #333333;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 15px;
+}
+
+.groups-discussions-posted
+{
+	font-size: 10px;
+	text-decoration: underline;
+}
+
+.groups-discussions-user
+{
+	text-transform: uppercase;
+}
+
+.gs-result .gs-title, .gs-result .gs-title 
+{
+	color: red;
+	text-decoration: none;
+}
+
+.head-title
+{
+	clear:both;
+}
+
+.head-title h1
+{
+	background: #CCCCCC;
+	color: #333333;
+	font-size: 18px;
+	float:left;
+	height: 30px;
+	padding:10px;
+	text-decoration: underline;
+}
+
+.head-title h1 a
+{
+	background: #CCCCCC;
+	color: #333333;
+	font-size: 18px;
+	float:left;
+	text-decoration: underline;
+}
+
+.head-title span
+{
+	background: #CCCCCC;
+	clear:right;
+	height: 30px;
+	padding:10px;
+}
+
+.italic
+{
+	font-style: italic;
+	font-weight: 400;
+}
+
+.left-col-heading
+{
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 80px;
+	padding: 10px 0 20px 0;
+	z-index: 99;
+}
+
+.light
+{
+	font-style:normal;
+	font-weight: 300;
+}
+
+.medium
+{
+	font-style:normal;
+	font-weight: 500;
+}
+
+.meta
+{
+	color:#CCCCCC;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size:10px;
+}
+
+.minor-col
+{
+	float: left;
+	margin:0;
+	width: 300px;
+}
+
+.profile
+{
+	margin-bottom: 10px;
+	margin-right: 10px;
+	float: left;
+}
+	
+.profile-left-buttons
+{
+	width: 220px;
+	height: 65px;
+	background-color: #66cccc;
+}
+
+.regular
+{
+	font-style:normal;
+	font-weight: 400;
+}
+
+.regular-italic
+{
+	font-style:italic;
+	font-weight: 400;
+}
+
+.resource-address
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 15px;
+}
+
+.resource-description
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.resource-name
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 15px;
+}
+
+.sitemap-link
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	text-decoration: none;
+	color: #333333;
+}
+
+.standard-col
+{
+	clear: both;
+	float: left;
+	margin: 0px 20px 60px 0px;
+	position: relative;
+	width: 440px;
+}
+
+.sub-nav
+{
+	
+}
+
+.thin
+{
+	font-style:normal;
+	font-weight: 200;
+}
+
+.thumb-images
+{
+	float: right;
+	margin: 60px 0px 0px;
+	position: relative;
+	width: 140px;
+}
+
+.thumb-images ul li,
+.thumb-label ul li
+{
+	float:left;
+	height: 40px;
+	width: 40px;
+}
+
+.thumb-label
+{
+	float:left;
+	margin:60px 0px;
+	width:60px;
+}
+
+
+
+/**
+ * @Ids
+ */
+#advanced-search {
+	color: #66CCCC;
+	display: inline;
+	float: right;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: right;
+	text-transform: uppercase;
+	text-decoration: underline;
+	position: relative;
+	width: 100px;
+}
+
+#advanced-search-drop {
+	width: 460px;
+	display: none;
+}
+
+#alreadyhave {
+	line-height: 14px;
+	color: #333333;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 10px;
+}
+ 
+#banner {
+	width: 480px;
+	height: 225px;
+}
+ 
+#banner-logo
+{
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 80px;
+	left: 20px;
+	position: absolute;
+	top: 20px;
+	z-index: 99;
+}
+
+#banner-nav
+{
+	
+    background: url('/images/screen/mobile/mobile_app_sprite.png');
+  	height: 20px;
+	left: 0px;
+    margin: 10px auto;
+    padding: 0;
+	position: absolute;
+	bottom: 60px;
+  	width: 460px;
+	z-index: 99;
+}
+
+	#banner-nav1{
+		left: 15px;
+		width: 146px;
+	}
+	
+	#banner-nav1 a:hover{
+	background: transparent url('/images/screen/mobile/mobile_app_sprite.png') -15px -20px no-repeat;
+	}
+	
+	#banner-nav2{
+		left: 165px;
+		width: 56px;
+	}
+	
+	#banner-nav2 a:hover{
+	background: transparent url('/images/screen/mobile/mobile_app_sprite.png') -165px -20px no-repeat;
+	}
+	
+	#banner-nav3{
+		left: 223px;
+		width: 44px;
+	}
+	
+	#banner-nav3 a:hover{
+	background: transparent url('/images/screen/mobile/mobile_app_sprite.png') -223px -20px no-repeat;
+	}
+	
+	#banner-nav li{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+	}
+	
+	#banner-nav li, #banner-nav a{
+		
+		display: block;
+		height: 20px;
+	}
+
+#banner-new
+{
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 80px;
+	position: absolute;
+	right: 40px;
+	top: 80px;
+	z-index: 99;
+	width: 97px;
+	height: 94px;
+}
+
+#banner-sign-up a, a:hover
+{
+	border: none;
+}
+
+#banner-search
+{
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 80px;
+	position: absolute;
+	right: 60px;
+	top: 50px;
+	z-index: 15;
+}
+
+	#banner-search input.ti {
+		background-color: transparent;
+		border: 5px #e6e5e5 solid;
+		color: #FFFFFF;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 10px;
+		height: 20px;
+		padding: 0;
+		width: 145px;
+		top: 0px;
+	}
+
+#banner-menu
+{
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 80px;
+	left: 0px;
+	position: absolute;
+	top: 148px;
+	z-index: 89;
+}
+
+#banner-user-chip
+{
+	bottom: 20px;
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 80px;
+	left: 0px;
+	position: absolute;
+	z-index: 99;
+}
+
+#banner-welcome
+{
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	position: absolute;
+	left: 565px;
+	top: 100px;
+	z-index: 15;
+}
+
+	#banner-welcome a
+	{
+		font-weight: 100;
+	}
+
+	#banner-welcome a:hover
+	{
+		color: #fff;
+	}
+
+#boiler
+{
+	
+	height: 20px;
+	margin: 0px auto;
+	text-align: center;
+	width: 480px;
+}
+
+#border
+{	
+	border-left: 2px #66cccc solid;
+	border-right: 2px #66cccc solid;
+	clear: both;
+	height: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	width: 820px;
+	
+}
+
+#container 
+{
+	background-color: none;
+	margin:0 auto;
+	text-align:left;
+	width: 480px;
+}
+
+#content 
+{
+	background-color: none;
+	margin:0 auto;
+	text-align:left;
+	width: 480px;
+}
+
+#dashboard-search
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #66CCCC;
+	font-size: 10px;
+	z-index: 99;
+	padding: 20px 0px 10px 0px;
+}
+
+	#dashboard-search input.ti {
+		background-color: transparent;
+		border: 5px #CCCCCC solid;
+		color: #CCCCCC;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		text-decoration: underline;
+		height: 45px;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 420px;
+	}
+	
+#fbt-nav
+{
+    background: url('/images/screen/facebookandtwitter.png');
+  	height: 20px;
+	left: 0px;
+    margin: 10px auto;
+    padding: 0;
+	position: absolute;
+	top: 350px;
+  	width: 320px;
+	z-index: 99;
+}
+
+	#fbt-nav1{
+		left: 12px;
+		width: 146px;
+	}
+	
+	#fbt-nav2{
+		left: 162px;
+		width: 130px;
+	}
+	
+	#fbt-nav li{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+	}
+	
+	#fbt-nav li, #fbt-nav a{
+		display: block;
+		height: 20px;
+	}
+	
+#fbt-navshort
+{
+    background: url('/images/screen/facebookandtwitter.png');
+  	height: 20px;
+	left: 0px;
+    margin: 10px auto;
+    padding: 0;
+	position: absolute;
+	top: 182px;
+  	width: 320px;
+	z-index: 99;
+}
+
+	#fbt-navshort1{
+		left: 12px;
+		width: 146px;
+	}
+	
+	#fbt-navshort2{
+		left: 162px;
+		width: 130px;
+	}
+	
+	#fbt-navshort li{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+	}
+	
+	#fbt-navshort li, #fbt-navshort a{
+		display: block;
+		height: 20px;
+	}
+
+#footer
+{
+	bottom: 0;
+	clear: both;
+	height: 20px;
+	margin: 0 auto;
+	padding: 0px;
+	position: relative;
+}
+
+#footer-menu
+{
+	bottom: 0;
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 80px;
+	position: relative;
+	z-index: 99;
+}
+
+#footer-nav
+{
+  	
+    background: url('/images/screen/mobile/visitfullsite.png');
+  	height: 20px;
+	position: relative;
+	width: 460px;
+	z-index: 99;
+}
+
+	#footer-nav1{
+		left: 0px;
+		width: 460px;
+	}
+	
+	#footer-nav li{
+	
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+	}
+	
+	#footer-nav li, #footer-nav a{
+		
+		display: block;
+		height: 20px;
+	}
+
+#grey
+{
+	
+	background: #cbcbca;
+	height: 60px;
+	position: absolute;
+	width: 100%;
+}
+
+#groups-discussions
+{
+	border: 1px #66cccc solid;
+	margin-top: 20px;
+	width: 180px;
+	padding-top: 15px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+#groups-discussions-title
+{
+	color: #333333;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: underline;
+	text-transform: uppercase;
+}
+
+#groups-left 
+{
+	float: left;
+	position: relative;
+	right: 0px;
+	width: 490px;
+	/*height: 900px;
+	overflow: auto;*/
+	padding: 20px 0px;
+}
+
+#groups-right
+{
+	float: right;
+	left: 0px;
+	margin-top: 20px;
+	position: relative;
+	width: 220px;
+}
+
+	#groups-right a.groupsright-buttons {
+		background-color: #66cccc;
+		color: #fff;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-weight: 200;
+		text-transform: uppercase;
+		padding-left: 20px;
+	}
+
+	#groups-right a.groupsright-buttons:hover {
+		text-decoration: underline;
+	}
+
+	#groups-right a.groupsright-links {
+		color: #66cccc;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		text-transform: uppercase;
+		padding-left: 20px;
+	}
+
+	#groups-right a.groupsright-links:hover {
+		text-decoration: underline;
+	}
+
+#groups-search
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #66CCCC;
+	font-size: 10px;
+	z-index: 99;
+	padding-bottom: 10px;
+}
+
+	#groups-search input.ti {
+		background-color: transparent;
+		border: 5px #CCCCCC solid;
+		color: #CCCCCC;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		text-decoration: underline;
+		height: 45px;
+		padding-left: 15px;
+		width: 515px;
+	}
+
+#latest-news
+{
+	color:white;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 80px;
+	padding: 10px 0 20px 0;
+	margin-left: -20px;
+	z-index: 99;
+}
+
+#main
+{
+	clear: both;
+	margin:0 auto;
+	width: 480px;
+}
+
+#post-status
+{
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #66CCCC;
+	font-size: 10px;
+	z-index: 99;
+	padding-bottom: 10px;
+}
+
+	#post-status input.ti {
+		background-color: transparent;
+		border: 5px #CCCCCC solid;
+		color: #CCCCCC;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		text-decoration: underline;
+		height: 45px;
+		padding-left: 15px;
+		width: 490px;
+	}
+
+#primary
+{
+	float: left;
+	left: 180px;
+	position: relative;
+	width: 460px;
+}
+
+#primary-left
+{
+	float: left;
+	left: 0px;
+	/*margin: 0 20px;*/
+	position: relative;
+	width: 460px;
+}
+
+#profile-left
+{
+	float: left;
+	left: 0px;
+	margin-top: 20px;
+	position: relative;
+	width: 220px;
+}
+
+	#profile-left a.profileleft-buttons {
+		background-color: #66cccc;
+		color: #fff;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-weight: 200;
+		text-transform: uppercase;
+		padding-left: 20px;
+	}
+
+	#profile-left a.profileleft-buttons:hover {
+		text-decoration: underline;
+	}
+
+	#profile-left a.profileleft-links {
+		color: #66cccc;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		text-transform: uppercase;
+		padding-left: 20px;
+	}
+
+	#profile-left a.profileleft-links:hover {
+		text-decoration: underline;
+	}
+
+#profile-right 
+{
+	float: right;
+	margin-top: 20px;
+	position: relative;
+	right: 0px;
+	width: 490px;
+	/*height: 900px;
+	overflow: auto;*/
+	padding: 20px;
+	border-left: 10px #CCCCCC solid;
+}
+
+#profile-status
+{
+	margin: 40px 0px 20px 0px;
+}
+
+#profilepage-nav
+{
+  	
+    background: url('/images/screen/profilenav_sprite_2.png');
+  	height: 25px;
+	position: relative;
+	left: 30px;
+	width: 537px;
+	z-index: 99;
+}
+
+	#profilepage-nav1{
+		left: 7px;
+		width: 121px;
+	}
+	
+	#profilepage-nav1 a:hover,a:active{
+		background: transparent url('/images/screen/profilenav_sprite_2.png') -7px -25px no-repeat;
+	}
+	
+	#profilepage-nav2{
+		left: 138px;
+		width: 75px;
+	}
+	
+	#profilepage-nav2 a:hover,a:active{
+		background: transparent url('/images/screen/profilenav_sprite_2.png') -138px -25px no-repeat;
+	}
+	
+	#profilepage-nav3{
+		left: 223px;
+		width: 80px;
+	}
+	
+	#profilepage-nav3 a:hover,a:active{
+		background: transparent url('/images/screen/profilenav_sprite_2.png') -223px -25px no-repeat;
+	}
+	
+	#profilepage-nav4{
+		left: 309px;
+		width: 76px;
+	}
+	
+	#profilepage-nav4 a:hover,a:active{
+		background: transparent url('/images/screen/profilenav_sprite_2.png') -309px -25px no-repeat;
+	}
+	
+	#profilepage-nav5{
+		left: 389px;
+		width: 72px;
+	}
+	
+	#profilepage-nav5 a:hover,a:active{
+		background: transparent url('/images/screen/profilenav_sprite_2.png') -389px -25px no-repeat;
+	}
+	
+	#profilepage-nav6{
+		left: 466px;
+		width: 71px;
+	}
+	
+	#profilepage-nav6 a:hover,a:active{
+		background: transparent url('/images/screen/profilenav_sprite_2.png') -466px -25px no-repeat;
+	}
+	
+	#profilepage-nav li{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+	}
+	
+	#profilepage-nav li, #profilepage-nav a{
+		display: block;
+		height: 25px;
+	}
+
+#secondary 
+{
+	float: left;
+	left: -540px;
+	margin: 0px 20px;
+	position: relative;
+	width: 220px;
+}
+
+#secondary-right 
+{
+	float: right;
+	margin:0;
+	position: relative;
+	right: 0px;
+	top: 10px;
+	width: 220px;
+}
+
+#signup
+{
+	z-index: 99;
+}
+
+	#signup input.ti {
+		background-color: transparent;
+		border: 1px #66cccc solid;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 15px;
+		height: 20px;
+		padding: 10px;
+		margin: 0;
+		width: 440px;
+	}
+	
+	#signup span.label {
+		color: #333333;
+		font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	
+#signup-button
+{	
+	color: #fff;
+	background-color: #66cccc;
+	float: right;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-size: 15px;
+	padding: 25px 0px;
+	position: relative;
+	right: 60px;
+	text-align: center;
+	text-transform: uppercase;
+	top: 20px;
+	width: 155px;
+	z-index: 99;
+}
+
+	#signup-button a, a img:hover
+	{
+		border: 0;
+	}
+	
+#sitemap
+{
+	margin-left: 20px;
+	margin-bottom: 20px;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	font-weight: 100;
+}
+
+#sitemap a:hover
+{
+	color: #66cccc;
+}
+
+#slideshow 
+{
+	
+    height:299px;
+    width: 540px;
+    position:relative;
+}
+
+#status
+{
+	padding: 10px 20px;
+	position:relative;
+	margin-bottom: 10px;
+	width: 500px;
+}
+
+#status.first
+{
+	border-top: 2px #6FCCDD solid;
+	padding: 10px 20px;
+	position:relative;
+	margin-bottom: 10px;
+	width: 500px;
+}
+
+#status h3 a
+{
+	color: #333333;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	text-decoration: underline;
+}
+
+#status h3 a:hover
+{
+	color: #CCCCCC;
+	font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+	text-decoration: underline;
+}
+
+#status ul
+{
+	list-style-type: none;
+	margin-bottom: 10px;
+	margin-top: 3px;
+	position: relative;
+}
+
+#status ul li
+{
+	float:left;
+}
+
+#status ul li a
+{
+	font-size: 10px;
+	text-decoration: underline;
+	margin-right: 5px;
+}
+
+#status ul li a:hover
+{
+	color: #99CC66;
+	font-size: 10px;
+	text-decoration: underline;
+	margin-right: 5px;
+}
+
+#tag-line
+{
+	font-size: 40px;
+	position:relative;
+}
+
+#thumb-container
+{
+	position:relative;
+	width: 220px;
+}
+
+#wrap
+{
+	position:relative;
+	margin:0 auto;
+	width:480px;
+}
+
+
+
+
+
+
+
+
+
+
+#signin_menu {
+    display:none;
+    background-color:#66cccc;
+    position:absolute;
+    width:110px;
+    height: 90px;
+    z-index:100;
+    text-align:left;
+    padding:10px;
+    padding-left: 15px;
+    top: 103px; 
+	right: 92px;
+    color:#fff;
+    font-size:11px;
+}
+
+#signin_menu input[type=text], #signin_menu input[type=password] {
+    display:block;
+    background-color: #66cccc;
+    border: 1px solid #fff;
+    font-size:10px;
+    color: #fff;
+    font-weight: bold;
+    font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+    margin:0 0 10px;
+    width:100px;
+}
+#signin_menu p {
+    margin:0;
+}
+
+#signin_menu a {
+    color:#fff;
+}
+
+#signin_menu a.submit {
+    color:#fff;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+#signin_menu p.forgot, #signin_menu p.complete {
+    clear:both;
+    margin:8px 0;
+    font-size:10px;
+    font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+    font-weight:bold;
+}
+
+#signin_menu p.forgot {
+	margin-top: 3px;
+}
+
+#signin_menu p a {
+    color:#fff;
+}
+#signin_submit {
+    border:1px solid #fff;
+    background-color: #ccc;
+    color:#fff;
+    font-size:10px;
+    font-family: "news-gothic-std-1","news-gothic-std-2", Verdana, Geneva, sans-serif;
+    font-weight:bold;
+}
+
+
+
+
+
+
+
+
+#uploadphoto_menu {
+    display: none;
+    background-color:#66cccc;
+    width: 75px;
+    position:absolute;
+    z-index:98;
+    top: -17px; 
+    right: -2px;
+    color:#fff;
+    font-size:10px;
+    font-weight: bold;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+	#uploadphoto_menu a {
+		color: #fff;
+	}
+	
+	
+#startdiscussion_menu {
+    display: none;
+    background-color:#66cccc;
+    /*width: 5px;*/
+    z-index:98;
+    position: relative;
+    color:#fff;
+    font-size:10px;
+    font-weight: bold;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+#startdiscussion_menu a {
+		color: #fff;
+	}
